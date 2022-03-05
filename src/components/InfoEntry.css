@@ -1,0 +1,22 @@
+.infoForm {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:80%;
+
+    margin:20px;
+}
+
+
+.formSection {
+    display:flex; 
+    flex-direction: column;
+    justify-content: center;
+    width:80%;
+    padding:20px;
+    border:10px solid rgb(236, 236, 255);;
+    border-radius:15px;
+    background-color: rgb(236, 236, 255) ;
+    margin-bottom:10px;
+    gap:10px;
+}
