@@ -61,7 +61,6 @@ class App extends Component {
         })
         break
     }
-    console.log(this.state)
 
   }
 

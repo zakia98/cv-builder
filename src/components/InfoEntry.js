@@ -51,14 +51,10 @@ class InfoEntry extends Component {
     }
 
     deleteSection(e) {
-        console.log(e.target)
         const targetArray = e.target.getAttribute('name')
         const targetIndex = e.target.getAttribute('index')
-        console.log(targetIndex)
         const oldArray = this.state[targetArray].slice()
-        console.log(typeof oldArray[0].props.index)
         const newArray = oldArray.filter(elem => elem.props.index !== targetIndex)
-        console.log(newArray)
         this.setState({
                 [targetArray]:newArray
         })
