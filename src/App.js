@@ -1,13 +1,25 @@
 import './App.css';
 import React, { Component } from 'react';
 import InfoEntry from './components/InfoEntry';
+import Output from './components/Output.js'
+
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      personal:{},
-      experience: {},
+      personal:{
+        firstName: 'John',
+        lastName:'Doe',
+        title:'Mr.',
+        address:'123 Fake Street',
+        phoneNumber:'0771487928',
+        email:'johndoe98@fakemail.com',
+        description:'' 
+      },
+      experience: {
+
+      },
       education: {}
     }
     this.submitData = this.submitData.bind(this)
@@ -71,10 +83,12 @@ class App extends Component {
   render() {
 
     const infoEntry = <InfoEntry className='form' submitData={this.submitData} handleChange={this.handleChange}/>
+    const cvData =  Object.assign({}, this.state)
     return(
       <div className="app">
         <header className='appHeader'>CV Builder</header>
         {infoEntry}
+        <Output cvData={cvData}></Output>
       </div>
     )
   }

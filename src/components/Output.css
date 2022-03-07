@@ -1,0 +1,17 @@
+.output {  
+    width: 21cm;
+    height: 29.7cm;
+    min-height: 29.7cm;
+    margin: 1cm auto;
+    border-radius:5px;
+    background:white;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.1);   
+}
+
+.header {
+    min-height:20%;
+    width:100%;
+    background-color: rgb(107, 107, 252);
+    outline: 1px blue solid;
+    color:rgb(255 246 246)
+}
