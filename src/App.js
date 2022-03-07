@@ -15,7 +15,7 @@ class App extends Component {
         address:'123 Fake Street',
         phoneNumber:'0771487928',
         email:'johndoe98@fakemail.com',
-        description:'' 
+        description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus nisi in auctor porta. Donec faucibus dui at neque sodales, vitae facilisis tortor bibendum. Vivamus dolor metus, venenatis vitae eleifend hendrerit, blandit at nunc. Mauris condimentum dolor id purus vulputate sodales. Suspendisse sed ullamcorper felis, et iaculis ligula. Nunc pellentesque, nisl vitae cursus finibus, ipsum libero viverra purus, sit amet tristique ex quam et nibh. Mauris euismod hendrerit nisi, in convallis nunc finibus ut Proin elementum, neque et rhoncus suscipit, purus sem tristique velit, non consequat lectus turpis sed justo. Ut ut magna augue. Nam tempor rutrum fringilla. Duis id.'
       },
       experience: {
 
@@ -73,11 +73,12 @@ class App extends Component {
         })
         break
     }
-
   }
 
+
+
   submitData() {
-    console.log(this)
+
   }
 
   render() {

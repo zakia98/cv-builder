@@ -60,7 +60,7 @@ class Output extends Component {
             phoneNumber: personalInfo.phoneNumber,
             address: personalInfo.address,
             email: personalInfo.email,
-            image:personalInfo.image
+            description:personalInfo.description
         }  
 
         const experienceSection = this.buildExperience();
@@ -71,9 +71,9 @@ class Output extends Component {
                     <h1 className='fullName'>{headerInfo.name}</h1>
                     <h2 className='address'>{headerInfo.address}</h2>
                     <h3 className='phoneNumber'>{headerInfo.phoneNumber}</h3>
-                    <h3 className='email'>{headerInfo.email}</h3>'
-                    <img src={headerInfo.image}></img>
+                    <h3 className='email'>{headerInfo.email}</h3>
                 </header>
+                <p class="description">{headerInfo.description}</p>
                 <div className="experience">
                     Experience:
                     {experienceSection}
