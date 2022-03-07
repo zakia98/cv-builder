@@ -38,6 +38,7 @@ class Output extends Component {
         const educationChildrenArray = [];
         const educationData = this.cvData.education
         const keys = Object.keys(educationData);
+        console.log(educationData)
         keys.forEach(key => {
             educationChildrenArray.push(
                 <div key={key}>
@@ -45,15 +46,11 @@ class Output extends Component {
                     <h2>{`City: ${educationData[key].city}`}</h2>
                     <h2>{`Degree Subject: ${educationData[key].degreeSubject}`}</h2>
                     <h2>{`From: ${educationData[key].from}`}</h2>
-                    <h2>{`To: ${educationData[key].universityName}`}</h2>
+                    <h2>{`To: ${educationData[key].to}`}</h2>
                 </div>
             )
         })
-        universityName:'',
-        city:'',
-        degreeSubject:'',
-        from:'',
-        to:''
+        return educationChildrenArray
     }
 
     render() {
@@ -63,17 +60,19 @@ class Output extends Component {
             phoneNumber: personalInfo.phoneNumber,
             address: personalInfo.address,
             email: personalInfo.email,
+            image:personalInfo.image
         }  
 
         const experienceSection = this.buildExperience();
-        const educationSection = this.buildEduction();
+        const educationSection = this.buildEducation();
         return(
             <div className='output'>
                 <header className='header'>
                     <h1 className='fullName'>{headerInfo.name}</h1>
                     <h2 className='address'>{headerInfo.address}</h2>
                     <h3 className='phoneNumber'>{headerInfo.phoneNumber}</h3>
-                    <h3 className='email'>{headerInfo.email}</h3>
+                    <h3 className='email'>{headerInfo.email}</h3>'
+                    <img src={headerInfo.image}></img>
                 </header>
                 <div className="experience">
                     Experience:
