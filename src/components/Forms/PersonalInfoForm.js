@@ -38,7 +38,7 @@ class PersonalInfoForm extends Component {
                 <input type='text' name='phoneNumber' placeholder='Phone Number' onChange={this.props.handleChange} ></input>
                 <input type='text' name='email' placeholder='email' onChange={this.props.handleChange} ></input>
                 <input type='text' name='description' placeholder='description' onChange={this.props.handleChange} ></input>
-                <input type='file' name='firstName' accept="image/png, image/jpeg" ></input>
+                <input type='file' name='image' accept="image/png, image/jpeg" onChange={this.props.handleChange}></input>
             </div >
         )
     }
