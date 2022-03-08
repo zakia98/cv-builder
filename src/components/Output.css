@@ -9,7 +9,7 @@
 }
 
 header {
-    min-height:20%;
+    min-height:15%;
     background-color: rgb(24, 37, 151);
     outline: 1px blue solid;
     color:rgb(255 246 246);
@@ -23,6 +23,10 @@ header {
     flex-direction: column;
     margin:0;
     padding:0;
+}
+
+.contact-info > * {
+    margin:5px;
 }
 
 .description {
@@ -45,5 +49,9 @@ header {
 
 .side {
     text-align: right;
+}
+
+.main > * { 
+    margin:5px;
 }
 

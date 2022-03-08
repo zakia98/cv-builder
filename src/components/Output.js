@@ -26,6 +26,7 @@ class Output extends Component {
                         <h2>{`Position: ${experienceData[key].position || ''} `}</h2>
                         <p>{`Company: ${experienceData[key].company || ''} `}</p>
                         <p>{`City: ${experienceData[key].city || ''} `}</p>
+                        <p>{experienceData[key].description}</p>
                     </div>
                     <div className='side'>
                         <p>{`To: ${experienceData[key].to || ''} `}</p>
