@@ -49,6 +49,7 @@ header {
 
 .side {
     text-align: right;
+    width:30%;
 }
 
 .main > * { 
