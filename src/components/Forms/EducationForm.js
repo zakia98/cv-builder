@@ -33,7 +33,7 @@ class EducationForm extends Component {
                 <input type='text' name='city' placeholder='City' onChange={this.props.handleChange} ></input>
                 <input type='text' name='degreeSubject' placeholder='Degree Subject' onChange={this.props.handleChange} ></input>
                 <input type='text' name='from' placeholder='From' onChange={this.props.handleChange} ></input>
-                <input type='text' name='to'placeholder='To' onChange={this.props.handleChange} ></input>
+                <input type='text' name='to'placeholder='To' onChange={this.props.handleChange} ></input>                
                 <button onClick={this.props.addEducationBtn} >Add a section</button>
                 <button name={this.props.name} index={this.props.index} onClick={this.props.deleteSection} >Delete</button>
             </div>
