@@ -26,7 +26,7 @@ class ExperienceForm extends Component {
                 <input type='text' name='from' placeholder='From'  onChange={this.props.handleChange}></input>
                 <input type='text' name='to' placeholder='To'  onChange={this.props.handleChange}></input>
                 <textarea name='description' placeholder='Description of Role' onChange={this.props.handleChange} ></textarea>
-                <button onClick={this.props.addExperienceBtn}  onChange={this.props.handleChange}>Add</button>
+                <button onClick={this.props.addExperienceBtn}  onChange={this.props.handleChange}>Add another</button>
                 <button onClick={this.props.deleteSection}  name={this.props.name} index={this.props.index}>Delete</button>
             </div>
         )

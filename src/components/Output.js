@@ -5,7 +5,6 @@ import { capitalise } from '../helper';
 class Output extends Component {
     constructor(props) {
         super(props)
-        this.cvData = this.props.cvData
         
     }
 
@@ -17,7 +16,7 @@ class Output extends Component {
     
     buildExperience() {
         const experienceChildrenArray = []
-        const experienceData = this.cvData.experience
+        const experienceData = this.props.cvData.experience
         const keys = Object.keys(experienceData)
         keys.forEach(key => {
             experienceChildrenArray.push(
@@ -41,9 +40,8 @@ class Output extends Component {
 
     buildEducation() {
         const educationChildrenArray = [];
-        const educationData = this.cvData.education
+        const educationData = this.props.cvData.education
         const keys = Object.keys(educationData);
-        console.log(educationData)
         keys.forEach(key => {
             educationChildrenArray.push(
                 <div key={key} className='item'>
@@ -63,7 +61,7 @@ class Output extends Component {
     }
 
     render() {
-        const personalInfo = this.cvData.personal
+        const personalInfo = this.props.cvData.personal
         const headerInfo = {
             name: this.getName(personalInfo),
             phoneNumber: personalInfo.phoneNumber,
@@ -78,7 +76,7 @@ class Output extends Component {
             <div className='output'>
                 <header className='header'>
                     <h1 className='fullName'>{headerInfo.name}</h1>
-                    <div class='contact-info'>
+                    <div className='contact-info'>
                         <h2 className='address'>Address: {headerInfo.address}</h2>
                         <h3 className='phoneNumber'>Phone Number: {headerInfo.phoneNumber}</h3>
                         <h3 className='email'>Email: {headerInfo.email}</h3>

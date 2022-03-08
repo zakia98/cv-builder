@@ -73,9 +73,11 @@ class InfoEntry extends Component {
                 <PersonalInfoForm handleChange={this.props.handleChange}/>
                 {this.state.experienceChildren}
                 {this.state.educationChildren}
-                <button onClick={this.addEducationSection}>Add Education</button>
-                <button onClick={this.addExperienceSection}>Add Experience</button>
-                <button onClick={this.props.submitData}>Generate CV</button>
+                <div className='buttons'>
+                    <button className='button' onClick={this.addEducationSection}>Add Education Section</button>
+                    <button className='button' onClick={this.addExperienceSection}>Add Experience Section</button>
+                    <button className='button' onClick={this.props.generateFakeCV}>Generate a mock CV</button>
+                </div>
             </form>
         )
     }
