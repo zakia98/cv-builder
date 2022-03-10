@@ -3,20 +3,20 @@ import React, { Component, useEffect } from 'react';
 import { capitalise } from '../helper';
 
 function Output(props) {
-
+    
+    const personalInfo = props.cvData.personal
     const getName = function(personalInfo) {
         let name = capitalise(personalInfo.title) + ' ' 
             + capitalise(personalInfo.firstName) + ' '  + capitalise(personalInfo.lastName)
         return name
     }
-    const personalInfo = props.cvData.personal
-        const headerInfo = {
-            name: getName(personalInfo),
-            phoneNumber: personalInfo.phoneNumber,
-            address: personalInfo.address,
-            email: personalInfo.email,
-            description:personalInfo.description
-        }  
+    const headerInfo = {
+        name: getName(personalInfo),
+        phoneNumber: personalInfo.phoneNumber,
+        address: personalInfo.address,
+        email: personalInfo.email,
+        description:personalInfo.description
+    }  
     
     
 

@@ -29,10 +29,10 @@ function InfoEntry(props) {
     const addExperienceSection = function(e) {
         e.preventDefault()
         const uniqid = uniqidgen()
+        props.addExperienceObj(uniqid)
         const newItem = <ExperienceForm name='experienceChildren' key={uniqid} index={uniqid} addExperienceBtn={addExperienceSection}
         deleteSection={deleteSection} handleChange={props.handleChange}></ExperienceForm>
         setExperienceChildren(experienceChildren.concat(newItem))
-        console.log(experienceChildren)
     }
 
     const addEducationSection = function(e) {
