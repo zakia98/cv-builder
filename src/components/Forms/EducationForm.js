@@ -1,44 +1,21 @@
 import React, { Component } from 'react';
 
-class EducationForm extends Component {
-    constructor() {
-        super()
-        this.handleChange = this.handleChange.bind(this)
-        this.state = {
-            universityName:'',
-            city:'',
-            degreeSubject:'',
-            from:'',
-            to:''
-        }
+function EducationForm(props) {
 
-        this.handleChange = this.handleChange.bind(this);
-    }
+    return(
+        <div className='formSection' owner='education' index={props.index}>
+            <label>Education</label>
+            <input type='text' name='universityName' placeholder='University Name'  onChange={props.handleChange}></input>
+            <input type='text' name='city' placeholder='City' onChange={props.handleChange} ></input>
+            <input type='text' name='degreeSubject' placeholder='Degree Subject' onChange={props.handleChange} ></input>
+            <input type='text' name='from' placeholder='From' onChange={props.handleChange} ></input>
+            <input type='text' name='to'placeholder='To' onChange={props.handleChange} ></input>                
+            <button onClick={props.addEducationBtn} >Add another</button>
+            <button name={props.name} index={props.index} onClick={props.deleteSection} >Delete</button>
+        </div>
+    )
 
-    handleChange(e) {
-        e.preventDefault()
-        const value = e.target.value
-        this.setState({
-            [e.target.name]:value
-        })
-        console.log(this.state)
-    }
-
-
-    render() {
-        return(
-            <div className='formSection' owner='education' index={this.props.index}>
-                <label>Education</label>
-                <input type='text' name='universityName' placeholder='University Name'  onChange={this.props.handleChange}></input>
-                <input type='text' name='city' placeholder='City' onChange={this.props.handleChange} ></input>
-                <input type='text' name='degreeSubject' placeholder='Degree Subject' onChange={this.props.handleChange} ></input>
-                <input type='text' name='from' placeholder='From' onChange={this.props.handleChange} ></input>
-                <input type='text' name='to'placeholder='To' onChange={this.props.handleChange} ></input>                
-                <button onClick={this.props.addEducationBtn} >Add another</button>
-                <button name={this.props.name} index={this.props.index} onClick={this.props.deleteSection} >Delete</button>
-            </div>
-        )
-    }
 }
+
 
 export default EducationForm

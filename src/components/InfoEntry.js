@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import './InfoEntry.css'
 import PersonalInfoForm from './Forms/PersonalInfoForm';
 import ExperienceForm from './Forms/ExperienceForm';
@@ -6,81 +6,59 @@ import EducationForm from './Forms/EducationForm';
 import uniqid from 'uniqid'
 
 
-class InfoEntry extends Component {
-    constructor(props) {
-        super() 
-        this.state = {
-            educationChildren:[
+function InfoEntry(props) {
+    const uniqidgen = uniqid
+    const [experienceChildren, setExperienceChildren] = useState([])
+    const [educationChildren, setEducationChildren] = useState([])
 
-            ],
-            experienceChildren:[
-
-            ]
+    const deleteSection = function(e) {
+        e.preventDefault()
+        const targetArray = e.target.getAttribute('name');
+        const targetIndex = e.target.getAttribute('index');
+        switch(targetArray) {
+            case 'educationChildren':
+                console.log(targetIndex)
+                setEducationChildren(educationChildren => educationChildren.filter(elem => elem.props.index !== targetIndex));
+                break
+            case 'experienceChildren':
+                setExperienceChildren(experienceChildren => experienceChildren.filter(elem => elem.props.index !== targetIndex))
+                break
         }
-        this.addExperienceSection = this.addExperienceSection.bind(this)
-        this.addEducationSection = this.addEducationSection.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.deleteSection = this.deleteSection.bind(this)
-        this.uniqid = uniqid
-        this.educationChildren = []
-
     }
 
-    addExperienceSection(e) {
+    const addExperienceSection = function(e) {
         e.preventDefault()
-        const uniqid = this.uniqid()
-        const newArray = this.state.experienceChildren.concat(<ExperienceForm name='experienceChildren' key={uniqid} index={uniqid} addExperienceBtn={this.addExperienceSection}
-        deleteSection={this.deleteSection} handleChange={this.props.handleChange}></ExperienceForm>)
-        this.setState(
-            {
-                experienceChildren:newArray
-            }
-        )
+        const uniqid = uniqidgen()
+        const newItem = <ExperienceForm name='experienceChildren' key={uniqid} index={uniqid} addExperienceBtn={addExperienceSection}
+        deleteSection={deleteSection} handleChange={props.handleChange}></ExperienceForm>
+        setExperienceChildren(experienceChildren.concat(newItem))
+        console.log(experienceChildren)
     }
 
-    addEducationSection(e) {
+    const addEducationSection = function(e) {
         e.preventDefault()
-        const uniqid = this.uniqid()
-        const newArray = this.state.educationChildren.concat(<EducationForm name='educationChildren' key={uniqid} index={uniqid} addEducationBtn={this.addEducationSection}
-        deleteSection={this.deleteSection} handleChange={this.props.handleChange}></EducationForm>)
-        this.setState(
-            {
-                educationChildren:newArray
-            }
-        )
+        const uniqid = uniqidgen()
+        const newItem = <EducationForm name='educationChildren' key={uniqid} index={uniqid} addEducationBtn={addEducationSection}
+        deleteSection={deleteSection} handleChange={props.handleChange}></EducationForm>
+        setEducationChildren(educationChildren.concat(newItem))
     }
 
-    deleteSection(e) {
-        const targetArray = e.target.getAttribute('name')
-        const targetIndex = e.target.getAttribute('index')
-        const oldArray = this.state[targetArray].slice()
-        const newArray = oldArray.filter(elem => elem.props.index !== targetIndex)
-        this.setState({
-                [targetArray]:newArray
-        })
-    }
-
-    handleSubmit(e) {
+    const handleSubmit = function(e) {
         e.preventDefault()
     }
-
     
-
-    render() {
-
-        return (
-            <form onSubmit={this.handleSubmit} className="infoForm">
-                <PersonalInfoForm handleChange={this.props.handleChange}/>
-                {this.state.experienceChildren}
-                {this.state.educationChildren}
-                <div className='buttons'>
-                    <button className='button' onClick={this.addEducationSection}>Add Education Section</button>
-                    <button className='button' onClick={this.addExperienceSection}>Add Experience Section</button>
-                    <button className='button' onClick={this.props.generateFakeCV}>Generate a mock CV</button>
-                </div>
-            </form>
-        )
-    }
+    return (
+        <form onSubmit={handleSubmit} className="infoForm">
+            <PersonalInfoForm handleChange={props.handleChange}/>
+            {experienceChildren}
+            {educationChildren}
+            <div className='buttons'>
+                <button className='button' onClick={addEducationSection}>Add Education Section</button>
+                <button className='button' onClick={addExperienceSection}>Add Experience Section</button>
+                <button className='button' onClick={props.generateFakeCV}>Generate a mock CV</button>
+            </div>
+        </form>
+    )
 }
 
 export default InfoEntry
