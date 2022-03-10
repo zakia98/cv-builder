@@ -1,22 +1,28 @@
 import './Output.css';
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { capitalise } from '../helper';
 
-class Output extends Component {
-    constructor(props) {
-        super(props)
-        
-    }
+function Output(props) {
 
-    getName(personalInfo) {
+    const getName = function(personalInfo) {
         let name = capitalise(personalInfo.title) + ' ' 
             + capitalise(personalInfo.firstName) + ' '  + capitalise(personalInfo.lastName)
         return name
     }
+    const personalInfo = props.cvData.personal
+        const headerInfo = {
+            name: getName(personalInfo),
+            phoneNumber: personalInfo.phoneNumber,
+            address: personalInfo.address,
+            email: personalInfo.email,
+            description:personalInfo.description
+        }  
     
-    buildExperience() {
+    
+
+    const buildExperience = function() {
         const experienceChildrenArray = []
-        const experienceData = this.props.cvData.experience
+        const experienceData = props.cvData.experience
         const keys = Object.keys(experienceData)
         keys.forEach(key => {
             experienceChildrenArray.push(
@@ -38,9 +44,9 @@ class Output extends Component {
         return experienceChildrenArray
     }
 
-    buildEducation() {
+    const buildEducation = function() {
         const educationChildrenArray = [];
-        const educationData = this.props.cvData.education
+        const educationData = props.cvData.education
         const keys = Object.keys(educationData);
         keys.forEach(key => {
             educationChildrenArray.push(
@@ -60,40 +66,31 @@ class Output extends Component {
         return educationChildrenArray
     }
 
-    render() {
-        const personalInfo = this.props.cvData.personal
-        const headerInfo = {
-            name: this.getName(personalInfo),
-            phoneNumber: personalInfo.phoneNumber,
-            address: personalInfo.address,
-            email: personalInfo.email,
-            description:personalInfo.description
-        }  
-
-        const experienceSection = this.buildExperience();
-        const educationSection = this.buildEducation();
-        return(
-            <div className='output'>
-                <header className='header'>
-                    <h1 className='fullName'>{headerInfo.name}</h1>
-                    <div className='contact-info'>
-                        <h2 className='address'>Address: {headerInfo.address}</h2>
-                        <h3 className='phoneNumber'>Phone Number: {headerInfo.phoneNumber}</h3>
-                        <h3 className='email'>Email: {headerInfo.email}</h3>
-                    </div>
-                </header>
-                <p className="description">{headerInfo.description}</p>
-                <div className="section experience">
-                    Experience:
-                    {experienceSection}
+    const experienceSection = buildExperience();
+    const educationSection = buildEducation();
+    
+    return(
+        <div className='output'>
+            <header className='header'>
+                <h1 className='fullName'>{headerInfo.name}</h1>
+                <div className='contact-info'>
+                    <h2 className='address'>Address: {headerInfo.address}</h2>
+                    <h3 className='phoneNumber'>Phone Number: {headerInfo.phoneNumber}</h3>
+                    <h3 className='email'>Email: {headerInfo.email}</h3>
                 </div>
-                <div className='section education'>
-                    Education:
-                    {educationSection}
-                </div>
+            </header>
+            <p className="description">{headerInfo.description}</p>
+            <div className="section experience">
+                Experience:
+                {experienceSection}
             </div>
-        )
-    }
+            <div className='section education'>
+                Education:
+                {educationSection}
+            </div>
+        </div>
+
+    )
 }
 
 export default Output
