@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 import InfoEntry from './components/InfoEntry';
 import Output from './components/Output.js'
 
@@ -17,18 +17,25 @@ function App(props) {
   })
 
   const [experience, setExperience] = useState({})
-
+  const experienceRef = useRef(experience)
   const [education, setEducation] = useState({})
   
   useEffect(() => {
-    console.log(experience)
+    experienceRef.current = experience
   })
 
   const addExperienceObj = function(index) {
-    setExperience(prevState => ({
-      ...prevState,
-      [index]:{}
-    }))
+    setExperience({
+      ...experience,
+      [index]:{
+        city:'',
+        company:'',
+        description:'',
+        from:'',
+        position:'',
+        to:''
+      }
+    })
   }
 
   const generateFakeCV = function() {
@@ -85,21 +92,23 @@ function App(props) {
       key:e.target.parentElement.getAttribute('index')
     }
 
-    
-    switch(details.owner) {
-     case 'personal':
+    if (details.owner == 'personal') {
       setPersonal(prevState => ({
         ...prevState,
         [e.target.name]:value,
       }))
-      case 'experience':
-        const exp = {...experience}
-        exp[details.key][e.target.name] = value
-        setExperience(experience => exp)
+    } else if (details.owner == 'experience') {
+      const obj = { ...experienceRef.current }
+      if (obj[details.key]) {
+        obj[details.key][e.target.name] = value
+        setExperience(obj)
+      } else {
+        obj[details.key] = {[e.target.name]:value}
+        setExperience(obj)
+      }
     }
   }
 
-//add an "on new section part? to info entry"
   const infoEntry = <InfoEntry className='form' generateFakeCV={generateFakeCV} handleChange={handleChange} addExperienceObj={addExperienceObj}/>
   const cvData =  {personal, experience, education}
   return(

@@ -17,8 +17,6 @@ function Output(props) {
         email: personalInfo.email,
         description:personalInfo.description
     }  
-    
-    
 
     const buildExperience = function() {
         const experienceChildrenArray = []
