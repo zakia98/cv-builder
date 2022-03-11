@@ -19,9 +19,14 @@ function App(props) {
   const [experience, setExperience] = useState({})
   const experienceRef = useRef(experience)
   const [education, setEducation] = useState({})
+  const educationRef = useRef(education)
   
   useEffect(() => {
     experienceRef.current = experience
+  })
+
+  useEffect(() => {
+    educationRef.current = education
   })
 
   const addExperienceObj = function(index) {
@@ -33,6 +38,19 @@ function App(props) {
         description:'',
         from:'',
         position:'',
+        to:''
+      }
+    })
+  }
+
+  const addEducationObj = function(index) {
+    setEducation({
+      ...education,
+      [index]:{
+        universityName:'',
+        city:'',
+        degreeSubject:'',
+        from:'',
         to:''
       }
     })
@@ -106,10 +124,21 @@ function App(props) {
         obj[details.key] = {[e.target.name]:value}
         setExperience(obj)
       }
+    } else if (details.owner == 'education') {
+      const obj = { ...educationRef.current }
+      console.log(obj)
+      if (obj[details.key]) {
+        obj[details.key][e.target.name] = value;
+        setEducation(obj)
+      } else {
+        console.log('ref not found')
+        obj[details.key] = {[e.target.name]:value}
+        setEducation(obj)
+      }
     }
   }
 
-  const infoEntry = <InfoEntry className='form' generateFakeCV={generateFakeCV} handleChange={handleChange} addExperienceObj={addExperienceObj}/>
+  const infoEntry = <InfoEntry className='form' generateFakeCV={generateFakeCV} handleChange={handleChange} addExperienceObj={addExperienceObj} addEducationObj={addEducationObj}/>
   const cvData =  {personal, experience, education}
   return(
     <div className="app">

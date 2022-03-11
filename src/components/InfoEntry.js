@@ -38,6 +38,7 @@ function InfoEntry(props) {
     const addEducationSection = function(e) {
         e.preventDefault()
         const uniqid = uniqidgen()
+        props.addEducationObj(uniqid)
         const newItem = <EducationForm name='educationChildren' key={uniqid} index={uniqid} addEducationBtn={addEducationSection}
         deleteSection={deleteSection} handleChange={props.handleChange}></EducationForm>
         setEducationChildren(educationChildren.concat(newItem))
